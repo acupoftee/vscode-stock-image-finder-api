@@ -4,7 +4,7 @@
   "description": "proxy for stock-image-finder vscode extension",
   "license": "MIT",
   "author": "@acupoftee",
-  "type": "common",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
