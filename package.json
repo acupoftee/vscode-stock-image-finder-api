@@ -1,0 +1,15 @@
+{
+  "name": "stock-image-finder-api",
+  "version": "1.0.0",
+  "description": "proxy for stock-image-finder vscode extension",
+  "license": "MIT",
+  "author": "@acupoftee",
+  "type": "common",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
