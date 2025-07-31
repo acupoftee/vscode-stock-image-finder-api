@@ -1,8 +1,17 @@
 const express = require('express');
 const axios = require('axios');
+const RateLimit = require('express-rate-limit');
 
 const app = express();
 const port = process.env.PORT;
+
+// Limit to 20 requests per minute
+const ratelimiter = RateLimit({
+    windowMs: 1 * 60 * 1000,
+    max: 20,
+});
+
+app.use(ratelimiter);
 
 app.get('/photos', async (req, res) => {
     const query = req.query.query;
