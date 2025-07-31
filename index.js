@@ -19,7 +19,7 @@ app.get('/photos', async (req, res) => {
         res.send({ data: response.data });
     } catch (e) {
         console.error(e);
-    }
+    };
 })
 
 app.listen(port, () => console.log(`App listening on port ${port}`))
