@@ -14,6 +14,7 @@ const ratelimiter = RateLimit({
 app.use(ratelimiter);
 
 app.get('/photos', async (req, res) => {
+    const RESULTS_PER_PAGE = 30;
     const query = req.query.query;
     const page = req.query.page || 1; // default to first page
     if (!query) {
@@ -22,7 +23,7 @@ app.get('/photos', async (req, res) => {
 
     try {
         const response = await axios.get('https://api.unsplash.com/search/photos', {
-            params: { query, page: page },
+            params: { query, page: page, per_page: RESULTS_PER_PAGE },
             headers: { 'Authorization': `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}` },
         });
         res.send({ data: response.data });
