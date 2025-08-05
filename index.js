@@ -32,4 +32,16 @@ app.get('/photos', async (req, res) => {
     };
 })
 
+app.post('/download', async (req, res) => {
+    const url = req.body.downloadLocation;
+    try {
+        const response = await axios.get(url, {
+            headers: { 'Authorization': `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}` },
+        });
+        res.send({ data: response.data})
+    } catch (e) {
+        console.error(e);
+    }
+})
+
 app.listen(port, () => console.log(`App listening on port ${port}`))
