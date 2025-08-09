@@ -12,6 +12,7 @@ const ratelimiter = RateLimit({
 });
 
 app.use(ratelimiter);
+app.use(express.json())
 
 app.get('/photos', async (req, res) => {
     const RESULTS_PER_PAGE = 30;
@@ -33,12 +34,12 @@ app.get('/photos', async (req, res) => {
 })
 
 app.post('/download', async (req, res) => {
-    const url = req.body.downloadLocation;
+    const url = req.body.url.toString();
     try {
         const response = await axios.get(url, {
             headers: { 'Authorization': `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}` },
         });
-        res.send({ data: response.data})
+        res.send({ data: response.data })
     } catch (e) {
         console.error(e);
     }
